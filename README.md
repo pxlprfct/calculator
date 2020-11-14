@@ -1,7 +1,7 @@
 # Calculator
 
-![Node.js CI](https://github.com/pxlprfct/node-starter/workflows/Node.js%20CI/badge.svg)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pxlprfct_node-starter&metric=alert_status)](https://sonarcloud.io/dashboard?id=pxlprfct_node-starter)
+![Node.js CI](https://github.com/pxlprfct/calculator/workflows/Node.js%20CI/badge.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pxlprfct_calculator&metric=alert_status)](https://sonarcloud.io/dashboard?id=pxlprfct_calculator)
 
 > Write some code to calculate a result from a set of instructions.
 > 
