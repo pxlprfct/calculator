@@ -7,5 +7,14 @@ describe('a calculator takes in a set of instructions, and returns a result', ()
 
       expect(calculate(INSTRUCTION)).toBe(3);
     });
+
+    describe(`all other instructions are used on the initial value`, () => {
+      it(`the 'add' operator adds to the initialised value`, () => {
+        const INSTRUCTION = `add 2
+          apply 3`;
+
+        expect(calculate(INSTRUCTION)).toBe(5);
+      });
+    });
   });
 });
