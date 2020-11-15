@@ -1,4 +1,4 @@
-const { calculate } = require('../index');
+const { calculate } = require('../calculator');
 
 describe('a calculator takes in instructions, and returns a result', () => {
   describe('each instruction is comprised of a keyword (called an operator) and a number', () => {
