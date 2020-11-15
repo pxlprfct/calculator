@@ -1,3 +1,19 @@
+const getInitialValue = (instructions) => {
+  try {
+    const lastInstruction = instructions.pop();
+
+    if (lastInstruction[0] !== 'apply') {
+      throw Error();
+    }
+
+    return lastInstruction[1];
+  } catch (error) {
+    throw Error(
+      'The last line of a list of a instructions needs to be "apply" and then a value',
+    );
+  }
+};
+
 const calculate = (input) => {
   const instructions = input
     .split('\n')
@@ -8,15 +24,7 @@ const calculate = (input) => {
       return [operation, Number(value)];
     });
 
-  const lastLine = instructions.pop();
-
-  if (lastLine[0] !== 'apply') {
-    throw Error(
-      'The last line of a list of a instructions needs to be "apply" and then a value',
-    );
-  }
-
-  const initialValue = lastLine[1];
+  const initialValue = getInitialValue(instructions);
 
   const result = instructions.reduce((acc, current) => {
     const [operator, value] = current;

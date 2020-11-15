@@ -45,8 +45,8 @@ describe('a calculator takes in a list instructions, and returns a result', () =
   });
 });
 
-describe('Guards and errors', () => {
-  describe('Reasons to throw', () => {
+describe('guards and errors', () => {
+  describe('reasons to throw', () => {
     it(`if the last line of the list of instructions isn't the 'apply' operator`, () => {
       const ERROR_MESSAGE =
         'The last line of a list of a instructions needs to be "apply" and then a value';
