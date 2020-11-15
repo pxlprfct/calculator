@@ -9,7 +9,7 @@ const {
   EXAMPLE_2,
 } = require('./fixtures/examples');
 
-describe('a calculator takes in instructions, and returns a result', () => {
+describe('a calculator takes in a list instructions, and returns a result', () => {
   describe('each instruction is comprised of a keyword (called an operator) and a number', () => {
     it(`the 'apply' operator is the initialised value`, () => {
       expect(calculate(APPLY)).toBe(3);
@@ -35,12 +35,22 @@ describe('a calculator takes in instructions, and returns a result', () => {
   });
 
   describe('the calculator can be passed multiple instructions', () => {
-    test(`adding and multiplying (Example 1)`, () => {
+    it(`adding and multiplying (Example 1)`, () => {
       expect(calculate(EXAMPLE_1)).toBe(15);
     });
 
-    test(`multiplying (Example 2)`, () => {
+    it(`multiplying (Example 2)`, () => {
       expect(calculate(EXAMPLE_2)).toBe(45);
+    });
+  });
+});
+
+describe('Guards and errors', () => {
+  describe('Reasons to throw', () => {
+    it(`if the last line of the list of instructions isn't the 'apply' operator`, () => {
+      const ERROR_MESSAGE =
+        'The last line of a list of a instructions needs to be "apply" and then a value';
+      expect(() => calculate(`add 2`)).toThrowError(ERROR_MESSAGE);
     });
   });
 });

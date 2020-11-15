@@ -8,7 +8,15 @@ const calculate = (input) => {
       return [operation, Number(value)];
     });
 
-  const apply = instructions.pop()[1];
+  const lastLine = instructions.pop();
+
+  if (lastLine[0] !== 'apply') {
+    throw Error(
+      'The last line of a list of a instructions needs to be "apply" and then a value',
+    );
+  }
+
+  const initialValue = lastLine[1];
 
   const result = instructions.reduce((acc, current) => {
     const [operator, value] = current;
@@ -29,7 +37,7 @@ const calculate = (input) => {
       acc /= value;
     }
     return acc;
-  }, apply);
+  }, initialValue);
 
   return result;
 };
