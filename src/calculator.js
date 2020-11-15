@@ -1,6 +1,7 @@
 const calculate = (input) => {
   const instructions = input
     .split('\n')
+    .filter((instruction) => Boolean(instruction))
     .map((instruction) => instruction.trim().split(' '))
     .map((instruction) => {
       const [operation, value] = instruction;
