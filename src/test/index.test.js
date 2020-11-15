@@ -1,6 +1,6 @@
 const { calculate } = require('../index');
 
-describe('a calculator takes in a set of instructions, and returns a result', () => {
+describe('a calculator takes in instructions, and returns a result', () => {
   describe('each instruction is comprised of a keyword (called an operator) and a number', () => {
     it(`the 'apply' operator is the initialised value`, () => {
       const INSTRUCTION = `apply 3`;
@@ -36,6 +36,23 @@ describe('a calculator takes in a set of instructions, and returns a result', ()
 
         expect(calculate(INSTRUCTION)).toBe(1.5);
       });
+    });
+  });
+
+  describe('the calculator can be passed multiple instructions', () => {
+    test(`adding and multiplying (Example 1)`, () => {
+      const INSTRUCTION = `add 2
+          multiply 3
+          apply 3`;
+
+      expect(calculate(INSTRUCTION)).toBe(15);
+    });
+
+    test(`multiplying (Example 2)`, () => {
+      const INSTRUCTION = `multiply 9
+          apply 5`;
+
+      expect(calculate(INSTRUCTION)).toBe(45);
     });
   });
 });
