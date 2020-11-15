@@ -1,8 +1,10 @@
+const { APPLY, ADD, SUBTRACT, MULTIPLY, DIVIDE } = require('./constants');
+
 const getInitialValue = (instructions) => {
   try {
     const lastInstruction = instructions.pop();
 
-    if (lastInstruction[0] !== 'apply') {
+    if (lastInstruction[0] !== APPLY) {
       throw Error();
     }
 
@@ -29,19 +31,19 @@ const calculate = (input) => {
   const result = instructions.reduce((acc, current) => {
     const [operator, value] = current;
 
-    if (operator === 'add') {
+    if (operator === ADD) {
       acc += value;
     }
 
-    if (operator === 'subtract') {
+    if (operator === SUBTRACT) {
       acc -= value;
     }
 
-    if (operator === 'multiply') {
+    if (operator === MULTIPLY) {
       acc *= value;
     }
 
-    if (operator === 'divide') {
+    if (operator === DIVIDE) {
       acc /= value;
     }
     return acc;
