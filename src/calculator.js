@@ -1,4 +1,12 @@
-const { APPLY, ADD, SUBTRACT, MULTIPLY, DIVIDE } = require('./constants');
+const {
+  APPLY,
+  ADD,
+  SUBTRACT,
+  MULTIPLY,
+  DIVIDE,
+  ERROR_MISSING_APPLY,
+} = require('./constants');
+const { formatInstructions } = require('./formatInstructions');
 
 const getInitialValue = (instructions) => {
   try {
@@ -10,21 +18,12 @@ const getInitialValue = (instructions) => {
 
     return lastInstruction[1];
   } catch (error) {
-    throw Error(
-      'The last line of a list of a instructions needs to be "apply" and then a value',
-    );
+    throw Error(ERROR_MISSING_APPLY);
   }
 };
 
 const calculate = (input) => {
-  const instructions = input
-    .split('\n')
-    .filter((instruction) => Boolean(instruction))
-    .map((instruction) => instruction.trim().split(' '))
-    .map((instruction) => {
-      const [operation, value] = instruction;
-      return [operation, Number(value)];
-    });
+  const instructions = formatInstructions(input);
 
   const initialValue = getInitialValue(instructions);
 
