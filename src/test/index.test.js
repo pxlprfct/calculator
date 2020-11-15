@@ -29,6 +29,13 @@ describe('a calculator takes in a set of instructions, and returns a result', ()
 
         expect(calculate(INSTRUCTION)).toBe(6);
       });
+
+      it(`the 'divide' operator multiplies from the initialised value`, () => {
+        const INSTRUCTION = `divide 2
+        apply 3`;
+
+        expect(calculate(INSTRUCTION)).toBe(1.5);
+      });
     });
   });
 });

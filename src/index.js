@@ -23,6 +23,10 @@ const calculate = (input) => {
     if (operator === 'multiply') {
       acc *= value;
     }
+
+    if (operator === 'divide') {
+      acc /= value;
+    }
     return acc;
   }, apply);
 
