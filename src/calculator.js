@@ -7,6 +7,7 @@ const {
   ERROR_MISSING_APPLY,
 } = require('./constants');
 const { formatInstructions } = require('./formatInstructions');
+const { add, subtract, multiply, divide } = require('./operations');
 
 const getInitialValue = (instructions) => {
   try {
@@ -22,33 +23,31 @@ const getInitialValue = (instructions) => {
   }
 };
 
+const runOperations = (result, instruction) => {
+  const [operation, value] = instruction;
+
+  switch (operation) {
+    case ADD:
+      return add(result, value);
+    case SUBTRACT:
+      return subtract(result, value);
+    case DIVIDE:
+      return divide(result, value);
+    case MULTIPLY:
+      return multiply(result, value);
+    default:
+      return result;
+  }
+};
+
 const calculate = (input) => {
   const instructions = formatInstructions(input);
-
   const initialValue = getInitialValue(instructions);
 
-  const result = instructions.reduce((acc, current) => {
-    const [operator, value] = current;
-
-    if (operator === ADD) {
-      acc += value;
-    }
-
-    if (operator === SUBTRACT) {
-      acc -= value;
-    }
-
-    if (operator === MULTIPLY) {
-      acc *= value;
-    }
-
-    if (operator === DIVIDE) {
-      acc /= value;
-    }
-    return acc;
-  }, initialValue);
-
-  return result;
+  return instructions.reduce(
+    (result, instruction) => runOperations(result, instruction),
+    initialValue,
+  );
 };
 
 module.exports = {

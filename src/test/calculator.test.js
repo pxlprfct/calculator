@@ -7,6 +7,7 @@ const {
   DIVIDE,
   EXAMPLE_1,
   EXAMPLE_2,
+  INVALID_OPERATOR,
 } = require('./fixtures/examples');
 
 describe('a calculator takes in a list instructions, and returns a result', () => {
@@ -52,5 +53,9 @@ describe('guards and errors', () => {
         'The last line of a list of a instructions needs to be "apply" and then a value';
       expect(() => calculate(`add 2`)).toThrowError(ERROR_MESSAGE);
     });
+  });
+
+  it(`when passed an invalid or unknown operator, ignore it`, () => {
+    expect(calculate(INVALID_OPERATOR)).toBe(3);
   });
 });

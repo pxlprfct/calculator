@@ -19,6 +19,9 @@ apply 3`;
 const EXAMPLE_2 = `multiply 9
 apply 5`;
 
+const INVALID_OPERATOR = `invalid 2
+apply 3`;
+
 module.exports = {
   APPLY,
   ADD,
@@ -27,4 +30,5 @@ module.exports = {
   DIVIDE,
   EXAMPLE_1,
   EXAMPLE_2,
+  INVALID_OPERATOR,
 };
