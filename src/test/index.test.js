@@ -15,6 +15,13 @@ describe('a calculator takes in a set of instructions, and returns a result', ()
 
         expect(calculate(INSTRUCTION)).toBe(5);
       });
+
+      it(`the 'subtract' operator subtracts from the initialised value`, () => {
+        const INSTRUCTION = `subtract 2
+        apply 3`;
+
+        expect(calculate(INSTRUCTION)).toBe(1);
+      });
     });
   });
 });

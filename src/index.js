@@ -15,6 +15,10 @@ const calculate = (input) => {
     if (operator === 'add') {
       acc += value;
     }
+
+    if (operator === 'subtract') {
+      acc -= value;
+    }
     return acc;
   }, apply);
 
