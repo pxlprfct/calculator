@@ -3,8 +3,8 @@ const calculate = (input) => {
     .split('\n')
     .map((instruction) => instruction.trim().split(' '))
     .map((instruction) => {
-      const [operation, operand] = instruction;
-      return [operation, Number(operand)];
+      const [operation, value] = instruction;
+      return [operation, Number(value)];
     });
 
   const apply = instructions.pop()[1];
@@ -18,6 +18,10 @@ const calculate = (input) => {
 
     if (operator === 'subtract') {
       acc -= value;
+    }
+
+    if (operator === 'multiply') {
+      acc *= value;
     }
     return acc;
   }, apply);

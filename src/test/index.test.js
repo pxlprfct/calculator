@@ -22,6 +22,13 @@ describe('a calculator takes in a set of instructions, and returns a result', ()
 
         expect(calculate(INSTRUCTION)).toBe(1);
       });
+
+      it(`the 'multiply' operator multiplies from the initialised value`, () => {
+        const INSTRUCTION = `multiply 2
+        apply 3`;
+
+        expect(calculate(INSTRUCTION)).toBe(6);
+      });
     });
   });
 });
