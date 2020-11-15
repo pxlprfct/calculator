@@ -11,5 +11,6 @@
   },
   "clearMocks": true,
   "resetMocks": true,
-  "resetModules": true
+  "resetModules": true,
+  "silent": true
 }

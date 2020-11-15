@@ -1,10 +1,14 @@
-const { FIXTURE_MESSAGE, FIXTURE_CAT } = require('./fixtures/strings');
-const { message, cat } = require('../index');
+const fs = require('fs');
+const { renderCalculation } = require('../index');
 
-test(`message tests are hooked up`, () => {
-  expect(message).toBe(FIXTURE_MESSAGE);
-});
+it('the application should load instructions from a file, calculate them, and then print them to the console', async () => {
+  const mockConsole = jest.spyOn(global.console, 'log');
 
-test(`cat tests are hooked up!`, () => {
-  expect(cat()).toBe(FIXTURE_CAT);
+  const INSTRUCTIONS = await fs.readFileSync(
+    'src/test/fixtures/example.txt',
+    'utf8',
+  );
+
+  expect(renderCalculation(INSTRUCTIONS)).toBe(5);
+  expect(mockConsole.mock.calls[0][0]).toBe(5);
 });

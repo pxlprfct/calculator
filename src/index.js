@@ -1,8 +1,9 @@
-const message = `Hello, world!`;
+const { calculate } = require('./calculator');
 
-const cat = () => `🐱`;
-
-module.exports = {
-  message,
-  cat,
+const renderCalculation = (input) => {
+  const result = calculate(input);
+  console.log(result);
+  return result;
 };
+
+module.exports = { renderCalculation };
