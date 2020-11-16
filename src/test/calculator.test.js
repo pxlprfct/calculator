@@ -10,26 +10,26 @@ const {
   INVALID_OPERATOR,
 } = require('./fixtures/examples');
 
-describe('a calculator takes in a list instructions, and returns a result', () => {
+describe('a calculator takes in a list instructions and returns a result', () => {
   describe('each instruction is comprised of a keyword (called an operator) and a number', () => {
-    it(`the 'apply' operator is the initialised value`, () => {
+    it(`the 'apply' operator returns the initial value`, () => {
       expect(calculate(APPLY)).toBe(3);
     });
 
-    describe(`all other instructions are used on the initial value`, () => {
-      it(`the 'add' operator adds to the initialised value`, () => {
+    describe(`all other instructions are performed on the initial value`, () => {
+      it(`the 'add' operator adds to the initial value`, () => {
         expect(calculate(ADD)).toBe(5);
       });
 
-      it(`the 'subtract' operator subtracts from the initialised value`, () => {
+      it(`the 'subtract' operator subtracts from the initial value`, () => {
         expect(calculate(SUBTRACT)).toBe(1);
       });
 
-      it(`the 'multiply' operator multiplies from the initialised value`, () => {
+      it(`the 'multiply' operator multiplies the initial value`, () => {
         expect(calculate(MULTIPLY)).toBe(6);
       });
 
-      it(`the 'divide' operator multiplies from the initialised value`, () => {
+      it(`the 'divide' operator divides the initial value`, () => {
         expect(calculate(DIVIDE)).toBe(1.5);
       });
     });
@@ -47,15 +47,13 @@ describe('a calculator takes in a list instructions, and returns a result', () =
 });
 
 describe('guards and errors', () => {
-  describe('reasons to throw', () => {
-    it(`if the last line of the list of instructions isn't the 'apply' operator`, () => {
-      const ERROR_MESSAGE =
-        'The last line of a list of a instructions needs to be "apply" and then a value';
-      expect(() => calculate(`add 2`)).toThrowError(ERROR_MESSAGE);
-    });
+  it(`if the last line of the list of instructions isn't the 'apply' operator - throw`, () => {
+    const ERROR_MESSAGE =
+      'The last line of a list of a instructions needs to be "apply" and then a value';
+    expect(() => calculate(`add 2`)).toThrowError(ERROR_MESSAGE);
   });
 
-  it(`when passed an invalid or unknown operator, ignore it`, () => {
+  it(`when the calculator is passed an invalid or unknown operator, it should ignore it`, () => {
     expect(calculate(INVALID_OPERATOR)).toBe(3);
   });
 });
