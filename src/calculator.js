@@ -1,12 +1,5 @@
-const {
-  APPLY,
-  ADD,
-  SUBTRACT,
-  MULTIPLY,
-  DIVIDE,
-  ERROR_MISSING_APPLY,
-} = require('./constants');
-const { add, subtract, multiply, divide } = require('./operations');
+const { APPLY, ERROR_MISSING_APPLY } = require('./constants');
+const { OPERATIONS } = require('./operations');
 const { formatInstructions } = require('./formatInstructions');
 
 const getInitialValue = (instructions) => {
@@ -19,16 +12,10 @@ const getInitialValue = (instructions) => {
   return value;
 };
 
-const OPERATIONS = new Map([
-  [ADD, add],
-  [SUBTRACT, subtract],
-  [MULTIPLY, multiply],
-  [DIVIDE, divide],
-]);
-
 const runOperations = (total, instruction) => {
   const [operation, value] = instruction;
   const func = OPERATIONS.get(operation);
+
   return func ? func(total)(value) : total;
 };
 
