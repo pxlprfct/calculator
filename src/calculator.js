@@ -6,38 +6,30 @@ const {
   DIVIDE,
   ERROR_MISSING_APPLY,
 } = require('./constants');
-const { formatInstructions } = require('./formatInstructions');
 const { add, subtract, multiply, divide } = require('./operations');
+const { formatInstructions } = require('./formatInstructions');
 
 const getInitialValue = (instructions) => {
-  try {
-    const lastInstruction = instructions.pop();
+  const [operation, value] = instructions.pop();
 
-    if (lastInstruction[0] !== APPLY) {
-      throw Error();
-    }
-
-    return lastInstruction[1];
-  } catch (error) {
+  if (operation !== APPLY) {
     throw Error(ERROR_MISSING_APPLY);
   }
+
+  return value;
 };
 
-const runOperations = (result, instruction) => {
-  const [operation, value] = instruction;
+const OPERATIONS = new Map([
+  [ADD, add],
+  [SUBTRACT, subtract],
+  [MULTIPLY, multiply],
+  [DIVIDE, divide],
+]);
 
-  switch (operation) {
-    case ADD:
-      return add(result, value);
-    case SUBTRACT:
-      return subtract(result, value);
-    case DIVIDE:
-      return divide(result, value);
-    case MULTIPLY:
-      return multiply(result, value);
-    default:
-      return result;
-  }
+const runOperations = (total, instruction) => {
+  const [operation, value] = instruction;
+  const func = OPERATIONS.get(operation);
+  return func ? func(total)(value) : total;
 };
 
 const calculate = (input) => {
