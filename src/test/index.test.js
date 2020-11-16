@@ -1,9 +1,9 @@
 const fs = require('fs');
 const { renderCalculation } = require('../index');
 
-it('the application should load instructions from a file, calculate them, and then print them to the console', async () => {
-  const mockConsole = jest.spyOn(global.console, 'log');
+const mockConsole = jest.spyOn(global.console, 'log');
 
+it('the application should load instructions from a file, calculate the result, and then print it to the console', async () => {
   const INSTRUCTIONS = await fs.readFileSync(
     'src/test/fixtures/example.txt',
     'utf8',
