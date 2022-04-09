@@ -1,7 +1,6 @@
 # Calculator
 
 ![Node.js CI](https://github.com/pxlprfct/calculator/workflows/Node.js%20CI/badge.svg)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pxlprfct_calculator&metric=alert_status)](https://sonarcloud.io/dashboard?id=pxlprfct_calculator)
 
 > Write some code to calculate a result from a set of instructions.
 > 
@@ -44,7 +43,7 @@ Built using the [node-starter](https://github.com/pxlprfct/node-starter) templat
 
 ## Run commands
 
-- `npm run start`: Starts the project
-- `npm run test`: Runs the tests - once
-- `npm run test:watch`: Continually watches and runs the tests on code changes
-- `npm run lint`: Formats the source code using ESLint
+- `pnpm run start`: Starts the project
+- `pnpm run test`: Runs the tests - once
+- `pnpm run test:watch`: Continually watches and runs the tests on code changes
+- `pnpm run lint`: Formats the source code using ESLint
